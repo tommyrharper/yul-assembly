@@ -20,4 +20,9 @@ contract YulTypesTest is Test {
         uint256 num = yulTypes.getNumberYul();
         assertEq(num, 42);
     }
+
+    function testGetHexYul() public {
+        uint256 num = yulTypes.getHexYul();
+        assertEq(num, 10);
+    }
 }
