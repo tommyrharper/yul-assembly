@@ -21,10 +21,32 @@ contract YulTypes {
         uint256 x;
 
         assembly {
-            // Yul has only one type, the 32 bit word (256 bits)
+            // Yul has only one type, the 32 byte word (256 bits)
             x := 0xa
         }
 
         return x;
+    }
+
+    function getStringYulNonsense() external pure returns (string memory) {
+        string memory myString = "";
+
+        assembly {
+            // this is setting the pointer on the stack myString to be a string - nonsense 
+            myString := "hello world"
+        }
+
+        return myString;
+    }
+
+    function getStringYul() external pure returns (string memory) {
+        string memory myString = "";
+
+        assembly {
+            // this is setting the pointer on the stack myString to be a string - nonsense 
+            myString := "hello world"
+        }
+
+        return myString;
     }
 }

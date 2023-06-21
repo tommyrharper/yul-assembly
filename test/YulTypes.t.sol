@@ -25,4 +25,14 @@ contract YulTypesTest is Test {
         uint256 num = yulTypes.getHexYul();
         assertEq(num, 10);
     }
+
+    function testGetStringYulNonsense() public {
+        vm.expectRevert();
+        string memory str = yulTypes.getStringYulNonsense();
+    }
+
+    // function testGetStringYul() public {
+    //     string memory str = yulTypes.getStringYul();
+    //     assertEq(str, "hello world");
+    // }
 }
