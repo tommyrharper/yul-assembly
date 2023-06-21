@@ -5,6 +5,9 @@
 
 ## Bitwise operations on 32 byte words
 
+- Warning: there is no overflow protection in yul
+- Complete list: https://docs.soliditylang.org/en/v0.8.20/yul.html#evm-dialect
+
 | solidity | YUL       |
 |----------|-----------|
 | a && b   | and(a, b) |
