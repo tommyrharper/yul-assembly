@@ -67,4 +67,26 @@ contract IfComparison {
 
         return result; // returns 2
     }
+
+    function safeNegation() external pure returns (uint256 result) {
+        result = 1;
+        assembly {
+            if iszero(2) {
+                result := 2
+            }
+        }
+
+        return result; // returns 1
+    }
+
+    function max(uint256 x, uint256 y) external pure returns (uint256 maximum) {
+        assembly {
+            if lt(x, y) {
+                maximum := y
+            }
+            if iszero(lt(x,y)) { // There are no else statemnets in yul
+                maximum := x
+            }
+        }
+    }
 }
