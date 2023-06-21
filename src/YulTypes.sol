@@ -65,7 +65,6 @@ contract YulTypes {
         return bytes32ToString(myString);
     }
 
-
     // this removes the trailing zeros
     function bytes32ToString(
         bytes32 _bytes32
@@ -79,5 +78,25 @@ contract YulTypes {
             bytesArray[i] = _bytes32[i];
         }
         return string(bytesArray);
+    }
+
+    function getBool() external pure returns (bool) {
+        bool x;
+
+        assembly {
+            x := 1
+        }
+
+        return x;
+    }
+
+    function getAddress() external pure returns (address) {
+        address x;
+
+        assembly {
+            x := 1
+        }
+
+        return x;
     }
 }

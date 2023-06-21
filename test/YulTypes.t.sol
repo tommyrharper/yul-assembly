@@ -40,4 +40,14 @@ contract YulTypesTest is Test {
         string memory str = yulTypes.getStringYul();
         assertEq(str, "hello world");
     }
+
+    function testGetBool() public {
+        bool val = yulTypes.getBool();
+        assertEq(val, true);
+    }
+
+    function testGetAddress() public {
+        address val = yulTypes.getAddress();
+        assertEq(val, 0x0000000000000000000000000000000000000001);
+    }
 }
