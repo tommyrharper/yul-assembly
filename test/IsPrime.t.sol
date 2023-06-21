@@ -17,4 +17,11 @@ contract IsPrimeTest is Test {
         assertTrue(!isPrime.isPrime(4));
         assertTrue(!isPrime.isPrime(15));
     }
+
+    function testPrimeV2() public {
+        assertTrue(isPrime.isPrimeV2(2));
+        assertTrue(isPrime.isPrimeV2(3));
+        assertTrue(!isPrime.isPrimeV2(4));
+        assertTrue(!isPrime.isPrimeV2(15));
+    }
 }
