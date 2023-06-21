@@ -2,23 +2,17 @@
 pragma solidity ^0.8.13;
 
 import "forge-std/Test.sol";
-import "../src/Counter.sol";
+import "../src/YulTypes.sol";
 
-contract CounterTest is Test {
-    Counter public counter;
+contract YulTypesTest is Test {
+    YulTypes public yulTypes;
 
     function setUp() public {
-        counter = new Counter();
-        counter.setNumber(0);
+        yulTypes = new YulTypes();
     }
 
-    function testIncrement() public {
-        counter.increment();
-        assertEq(counter.number(), 1);
-    }
-
-    function testSetNumber(uint256 x) public {
-        counter.setNumber(x);
-        assertEq(counter.number(), x);
+    function testGetNumberSol() public {
+        uint256 num = yulTypes.getNumberSol();
+        assertEq(num, 42);
     }
 }
