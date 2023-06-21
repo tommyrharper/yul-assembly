@@ -53,6 +53,7 @@ contract StorageBasics {
         }
     }
 
+    // NEVER DO THIS IN PRODUCTION
     function setVarYul(uint256 slot, uint256 value) external {
         assembly {
             sstore(slot, value)
