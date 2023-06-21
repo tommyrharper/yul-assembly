@@ -39,8 +39,8 @@ contract YulTypes {
         return myString;
     }
 
-    function getStringYul() external pure returns (string memory) {
-        string memory myString = "";
+    function getStringAsBytesYul() external pure returns (bytes32) {
+        bytes32 myString = "";
 
         assembly {
             // this is setting the pointer on the stack myString to be a string - nonsense 
@@ -48,5 +48,16 @@ contract YulTypes {
         }
 
         return myString;
+    }
+
+    function getStringYul() external pure returns (string memory) {
+        bytes32 myString = "";
+
+        assembly {
+            // this is setting the pointer on the stack myString to be a string - nonsense 
+            myString := "hello world"
+        }
+
+        return string(abi.encode(myString));
     }
 }

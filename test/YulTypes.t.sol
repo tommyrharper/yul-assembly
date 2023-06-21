@@ -28,11 +28,16 @@ contract YulTypesTest is Test {
 
     function testGetStringYulNonsense() public {
         vm.expectRevert();
-        string memory str = yulTypes.getStringYulNonsense();
+        yulTypes.getStringYulNonsense();
     }
 
-    // function testGetStringYul() public {
-    //     string memory str = yulTypes.getStringYul();
-    //     assertEq(str, "hello world");
-    // }
+    function testGetStringAsBytesYul() public {
+        bytes32 str = yulTypes.getStringAsBytesYul();
+        assertEq(str, "hello world");
+    }
+
+    function testGetStringYul() public {
+        string memory str = yulTypes.getStringYul();
+        assertEq(str, "hello world");
+    }
 }
