@@ -17,6 +17,7 @@ contract IsPrime {
                 i := add(i, 1)
             } {
                 if iszero(mod(x, i)) {
+                    // set p to false
                     p := 0
                     break
                 }
@@ -31,7 +32,8 @@ contract IsPrime {
             let i := 2
             // can do it like this as well
             for { } lt(i, halfX) { } {
-                if iszero(mod(x, i)) {
+                // using izero is more conventional, but eq works too
+                if eq(mod(x, i), 0) {
                     p := 0
                     break
                 }
