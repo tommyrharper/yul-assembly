@@ -54,10 +54,30 @@ contract YulTypes {
         bytes32 myString = "";
 
         assembly {
-            // this is setting the pointer on the stack myString to be a string - nonsense 
+            // the max this works for is 32 bytes
             myString := "hello world"
         }
 
-        return string(abi.encode(myString));
+        // this would work but it causes the test to fail due to the trailing zeros
+        // return string(abi.encode(myString));
+
+        // hence this is used instead to make the string comparison work with the trailing zeros
+        return bytes32ToString(myString);
+    }
+
+
+    // this removes the trailing zeros
+    function bytes32ToString(
+        bytes32 _bytes32
+    ) public pure returns (string memory) {
+        uint8 i = 0;
+        while (i < 32 && _bytes32[i] != 0) {
+            i++;
+        }
+        bytes memory bytesArray = new bytes(i);
+        for (i = 0; i < 32 && _bytes32[i] != 0; i++) {
+            bytesArray[i] = _bytes32[i];
+        }
+        return string(bytesArray);
     }
 }
