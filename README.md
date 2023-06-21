@@ -3,6 +3,8 @@
 - Github Code: https://github.com/RareSkills/Udemy-Yul-Code
 - Course on Udemy: https://www.udemy.com/course/advanced-solidity-yul-and-assembly
 
+## Bitwise operations on 32 byte words
+
 | solidity | YUL       |
 |----------|-----------|
 | a && b   | and(a, b) |

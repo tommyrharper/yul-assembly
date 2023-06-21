@@ -90,7 +90,7 @@ contract IfComparison {
         }
     }
 
-    // The rest:
+    // The rest: (all bitwise operations on 32 byte words)
     /*
         | solidity | YUL       |
         +----------+-----------+
