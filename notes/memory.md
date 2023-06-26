@@ -38,4 +38,21 @@
 
 ## How Solidity Uses Memory
 
+- Solidity allocates slots [0x00-0x20], [0x20-0x40] for "scratch space"
+  - Can write ephemeral stuff into this space. It also may not be empty because other the space is not guaranteed to be cleared.
+- Solidity reserves slot [0x40-0x60] as the the "free memory pointer"
+  - If you want to write something new memory, you can write it at the location this pointer points to, as it is guaranteed to not crash into anything. Solidity does not garbage collect, hence the free memory pointer will never decrement, only increment.
+- Solidity keeps slot [0x60-0x80] empty
+- The actions begins in slot [0x80-...]
+  - Structs and arrays will be stored from here onwards
 
+
+- Solidity uses memory for
+  - `abi.encode` and `abi.encodePacked`
+  - Structs and arrays (but you explicitly need the `memory` keyword)
+  - When structs or arrays are declared `memory` in function arguments
+  - Because objects in memory are laid out end to end, arrays have no `push` unlike storage
+    - Otherwise they could crash into the item in front of memory
+- In Yul
+  - *The variable itself* is where it begins in memory
+  - To access a dynamic array, you have to add 32 bytes or 0x20 to skip the length
