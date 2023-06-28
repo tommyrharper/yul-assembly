@@ -22,4 +22,28 @@ Ethereum transfers are 21k gas - so 1428 transactions per block - 119 transactio
 - Transaction data - the less transaction data, (the less non-zero bytes in it) the less the gas cost
 - Storage - the less storage you use, the less gas you pay
 
+## EIP-1559
+
+Before this, all the gas went to miners.
+
+gas price per gwei <= max_fee
+
+- max_priority_fee_per_gas
+  - what portion of the max_fee_per_gas you want to be a miner tip
+- max_fee_per_gas
+  - most gwei you are willing to pay per gas
+- There is also a protocol-level BASEFEE
+
+### BASEFEE
+
+Determined at the protocol level as number of gwei per gas to be burnt in a transaction.
+
+- Roughly increases by 12% if the last block was full, and decreases by 12% if the last block was empty
+  - Exact formula more complicated
+  - Solidity `^0.8.7` `block.basefee`
+
+### Max Base Fee
+
+- For a transaction to go through, max fee >= BASEFEE
+
 
