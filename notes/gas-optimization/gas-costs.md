@@ -122,5 +122,3 @@ if max_priority_fee < leftover => refund > 0
 - Max Priority Fee - most you are willing to give to the miner
 - Miner tip / priority fee - the amount the miner actually receives
   - The miner receives less than the max priority fee if max_fee - BASEFEE < max_priority_fee
-
-
